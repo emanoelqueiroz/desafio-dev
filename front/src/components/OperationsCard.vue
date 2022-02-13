@@ -1,6 +1,6 @@
 <template>
-  <div class="operation-item">
-    <div class="type-icon" :class="rowClass(operation.type)">
+  <div class="operation-item" :class="rowClass(operation.type)">
+    <div class="type-icon">
       ⭧
     </div>
     <div class="info">
@@ -14,9 +14,11 @@
     <span class="operation-date">
       {{formatDate(operation.date)}}
     </span>
-    <span class="operation-tag">
-      {{getType(operation.type).name}}
-    </span>
+    <div class="operation-tag-wrapper">
+      <span class="operation-tag">
+        {{getType(operation.type).name}}
+      </span>
+    </div>
     <div class="operation-item-total text-right">
       <span class="total-symbol" v-if="getType(operation.type).nature === 'output'">
         -
@@ -37,7 +39,7 @@ defineProps({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   $color-white: #fff;
   $color-negative: #e94335;
   $color-positive: #34a853;
@@ -45,14 +47,15 @@ defineProps({
   .operation-item {
     padding: 13px 13px;
     background: #222;
-    margin-top: 13px;
+    margin-top: 30px;
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-left: 3px solid;
 
     .type-icon {
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       width: 50px;
@@ -60,14 +63,24 @@ defineProps({
       margin-right: 13px;
       border-radius: 50px;
       font-size: 28px;
+    }
 
-      &.negative {
+    &.negative {
+      border-color: $color-negative;
+
+      .type-icon {
+        color: $color-negative;
         border: 1px solid $color-negative;
         background: fade-out($color-negative, 0.9);
         transform: scale(-1);
       }
+    }
 
-      &.positive {
+    &.positive {
+      border-color: $color-positive;
+      
+      .type-icon {
+        color: $color-positive;
         border: 1px solid $color-positive;
         background: fade-out($color-positive, 0.9);
       }
@@ -88,6 +101,14 @@ defineProps({
       right: 13px;
     }
 
+    .operation-tag-wrapper {
+      position: absolute;
+      top: -18px;
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
+
     .operation-tag {
       margin: 0 20px;
       font-size: 11px;
@@ -100,7 +121,7 @@ defineProps({
 
     .store-name {
       color: $color-white;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 700;
     }
 
@@ -110,12 +131,32 @@ defineProps({
 
     .operation-item-total {
       color: $color-white;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 700;
 
       span {
         font-weight: 700;
       }
+    }
+  }
+
+  @media (min-width: 800px) {
+    .operation-item {
+      margin-top: 13px;
+      border: 0;
+
+      .type-icon {
+        display: flex;
+      }
+
+      .operation-tag-wrapper {
+        position: static;
+      }
+
+      .store-name, .operation-item-total {
+        font-size: 18px;
+      }
+
     }
   }
 </style>

@@ -1,35 +1,35 @@
 export function getType(typeNumber) {
   return {
     1: {
-      name: 'Débito Entrada',
+      name: 'Débito',
       nature: 'input'
     },
     2: {
-      name: 'Boleto Saída',
+      name: 'Boleto',
       nature: 'output'
     },
     3: {
-      name: 'Financiamento Saída',
+      name: 'Financiamento',
       nature: 'output'
     },
     4: {
-      name: 'Crédito Entrada',
+      name: 'Crédito',
       nature: 'input'
     },
     5: {
-      name: 'Recebimento Empréstimo Entrada',
+      name: 'Recebimento Empréstimo',
       nature: 'input'
     },
     6: {
-      name: 'Vendas Entrada',
+      name: 'Vendas',
       nature: 'input'
     },
     7: {
-      name: 'Recebimento TED Entrada',
+      name: 'Recebimento TED',
       nature: 'input'
     },
     8: {
-      name: 'Recebimento DOC Entrada',
+      name: 'Recebimento DOC',
       nature: 'input'
     },
     9: {

@@ -38,7 +38,7 @@
   const statusClass = computed(() => total.value < 0 ? 'negative' : 'positive' )
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   $color-negative: #e94335;
   $color-positive: #34a853;
 
@@ -54,10 +54,18 @@
     border-radius: 5px;
     padding: 8px 13px;
     background: #222;
+    text-align: center;
 
     .total-value {
       font-size: 25px;
       font-weight: 700;
+    }
+  }
+
+  
+  @media (min-width: 800px) {
+    .total {
+      text-align: left;
     }
   }
 </style>

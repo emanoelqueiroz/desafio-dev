@@ -40,7 +40,7 @@ describe('card with operation info', () => {
 
     expect(operationDateElement.text()).toBe('01/03/2019 15:34:53')
 
-    expect(operationTagElement.text()).toBe('Financiamento Saída')
+    expect(operationTagElement.text()).toBe('Financiamento')
 
     expect(operationItemTotalElement.get('.total-symbol').text()).toBe('-')
     expect(operationItemTotalElement.get('.total-value').text()).toBe(value)
