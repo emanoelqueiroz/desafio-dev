@@ -1,6 +1,6 @@
-# front
+# Front-end Project
 
-This template should help get you started developing with Vue 3 in Vite.
+This project is the front-end for the bycoders_ test
 
 ## Recommended IDE Setup
 
@@ -9,17 +9,23 @@ This template should help get you started developing with Vue 3 in Vite.
 ## Project Setup
 
 ```sh
-npm install
+$ npm install
 ```
 
 ### Compile and Hot-Reload for Development
 
 ```sh
-npm run dev
+$ npm run dev
 ```
 
 ### Compile and Minify for Production
 
 ```sh
-npm run build
+$ npm run build
+```
+
+### Run the tests
+
+```sh
+$ npm run test
 ```
