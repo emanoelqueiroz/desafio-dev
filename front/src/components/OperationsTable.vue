@@ -1,7 +1,7 @@
 <template>
   <Loading v-if="isLoading" />
   <Alert v-else-if="hasError" type="danger" message="Something went wrong" />
-  <Alert v-else-if="!operations.length" type="info" message="Operations are empty" />
+  <Alert v-else-if="!operations.length" type="info" message="No operations found" />
   <section v-else class="operations-section">
     <OperationsTotal :operations="operations" />
     <div class="operations-title">List of Operations</div>

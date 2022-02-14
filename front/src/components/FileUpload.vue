@@ -7,7 +7,7 @@
           Release to upload the file
         </span>
         <span v-else-if="isUploading">
-          Uploading file
+          Uploading file...
         </span>
         <span v-else>
           Click to find some file or drop here to upload
@@ -103,10 +103,15 @@ export default {
     },
 
     upload(files) {
-      if (!files.length || files.length > 1 || this.isUploading)
+      if (!files.length || this.isUploading)
         return
 
       this.errorMessage = '';
+      if (files.length > 1) {
+        this.errorMessage = 'Mutiple files are not allowed.'
+        return
+      }
+
       if (!this.isFileValid(files[0])) {
         this.errorMessage = 'Invalid file extension. Please, insert one .txt file.'
         return
