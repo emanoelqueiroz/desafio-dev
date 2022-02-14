@@ -149,9 +149,11 @@ export default {
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      height: 200px;
+      padding: 8px 13px;
       border: 2px dashed fade-out($purple, 0.3);
       border-radius: 3px;
+      height: 200px;
+      text-align: center;
       transition: 0.2s;
 
       &:hover {

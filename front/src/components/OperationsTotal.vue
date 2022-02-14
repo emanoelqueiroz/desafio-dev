@@ -58,6 +58,9 @@
 
     .total-value {
       font-size: 25px;
+    }
+
+    span, .total-value {
       font-weight: 700;
     }
   }
