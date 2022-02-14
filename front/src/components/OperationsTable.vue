@@ -1,10 +1,7 @@
 <template>
-  <section v-if="loading" class="operations-section">
-    <Loading />
-  </section>
-  <section v-else-if="error" class="operations-section">
-    <WarningMessage message="Something went wrong" />
-  </section>
+  <Loading v-if="isLoading" />
+  <Alert v-else-if="hasError" type="danger" message="Something went wrong" />
+  <Alert v-else-if="!operations.length" type="info" message="Operations are empty" />
   <section v-else class="operations-section">
     <OperationsTotal :operations="operations" />
     <div class="operations-title">List of Operations</div>
@@ -15,21 +12,21 @@
 <script setup>
   import { ref, onMounted } from 'vue'
 
+  import Alert from './Alert.vue'
   import Loading from './Loading.vue'
-  import WarningMessage from './WarningMessage.vue'
   import OperationsCard from './OperationsCard.vue'
   import OperationsTotal from './OperationsTotal.vue'
 
-  const error = ref(false)
-  const loading = ref(true)
+  const hasError = ref(false)
+  const isLoading = ref(true)
   const operations = ref([])
 
   onMounted(() => {
     fetch('http://localhost:4200/api/operations')
       .then(data => data.json())
       .then(operationsData => operations.value = operationsData)
-      .catch(() => error.value = true)
-      .then(() => loading.value = false)
+      .catch(() => hasError.value = true)
+      .then(() => isLoading.value = false)
   })
 </script>
 

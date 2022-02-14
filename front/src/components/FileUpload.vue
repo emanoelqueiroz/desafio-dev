@@ -6,7 +6,7 @@
         <span v-if="isDragOver">
           Release to upload the file
         </span>
-        <span v-else-if="uploading">
+        <span v-else-if="isUploading">
           Uploading file
         </span>
         <span v-else>
@@ -15,21 +15,21 @@
       </label>
       <input id="fileUploadField" accept=".txt" type="file" />
     </div>
-    <WarningMessage v-if="errorMessage" :message="errorMessage" />
+    <Alert v-if="errorMessage" type="danger" :message="errorMessage" />
   </section>
 </template>
 
 <script>
-import WarningMessage from './WarningMessage.vue'
+import Alert from './Alert.vue'
 
 export default {
 
-  components: { WarningMessage },
+  components: { Alert },
 
   data() {
     return {
       file: null,
-      uploading: false,
+      isUploading: false,
       isDragOver: false,
       errorMessage: '',
     }
@@ -103,7 +103,7 @@ export default {
     },
 
     upload(files) {
-      if (!files.length || files.length > 1 || this.uploading)
+      if (!files.length || files.length > 1 || this.isUploading)
         return
 
       this.errorMessage = '';
@@ -113,7 +113,7 @@ export default {
       }
 
       this.file = files[0]
-      this.uploading = true;
+      this.isUploading = true;
 
       this.$el.querySelector('#fileUploadField').value = null
 

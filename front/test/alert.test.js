@@ -1,13 +1,13 @@
 import { mount } from '@vue/test-utils'
 
-import WarningMessage from '@/components/WarningMessage.vue'
+import Alert from '@/components/Alert.vue'
 
 test('show error message', async() => {
-  expect(WarningMessage).toBeTruthy()
+  expect(Alert).toBeTruthy()
 
   const message = 'Error of file type';
-  const wrapper = mount(WarningMessage, {
-    props: { message },
+  const wrapper = mount(Alert, {
+    props: { message, type: 'danger' },
   })
 
   expect(wrapper.text()).toContain(message)
